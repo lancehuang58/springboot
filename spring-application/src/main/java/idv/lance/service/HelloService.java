@@ -1,6 +1,6 @@
 package idv.lance.service;
 
-import idv.lance.Log;
+import idv.lance.aop.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

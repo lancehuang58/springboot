@@ -1,4 +1,4 @@
-package idv.lance;
+package idv.lance.properties;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;

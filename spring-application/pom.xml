@@ -18,12 +18,16 @@
     <dependencies>
         <dependency>
             <groupId>idv.lance</groupId>
-            <artifactId>spring-custom-starter</artifactId>
+            <artifactId>log-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

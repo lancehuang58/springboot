@@ -18,5 +18,6 @@
     <modules>
         <module>log-spring-boot-starter</module>
         <module>spring-application</module>
+        <module>version-spring-boot-starter</module>
     </modules>
 </project>

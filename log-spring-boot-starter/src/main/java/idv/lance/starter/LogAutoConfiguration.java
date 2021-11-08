@@ -1,6 +1,6 @@
 package idv.lance.starter;
 
-import idv.lance.aop.Log;
+import idv.lance.aop.LogTime;
 import idv.lance.aop.LogMethodInterceptor;
 import idv.lance.properties.LogProperties;
 import org.aopalliance.aop.Advice;
@@ -32,7 +32,7 @@ public class LogAutoConfiguration extends AbstractPointcutAdvisor {
     @PostConstruct
     public void init() {
         logger.info("init LogAutoConfiguration start");
-        this.pointcut = new AnnotationMatchingPointcut(null, Log.class);
+        this.pointcut = new AnnotationMatchingPointcut(null, LogTime.class);
         this.advice = new LogMethodInterceptor(logProperties.getExcludeArr());
         logger.info("exclude method name"+ Arrays.toString(logProperties.getExcludeArr()));
         logger.info("init LogAutoConfiguration end");

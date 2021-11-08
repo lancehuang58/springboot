@@ -1,19 +1,19 @@
 package idv.lance.service;
 
-import idv.lance.aop.Log;
+import idv.lance.aop.LogTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class HelloService {
-    @Log
+    @LogTime
     public String sayHello() {
         log.info("hello");
         return "hello";
     }
 
-    @Log
+    @LogTime
     public void core() {
         log.info("log for core");
     }

@@ -1,6 +1,7 @@
 package idv.lance.starter;
 
 import idv.lance.starter.entity.DmsAppVersion;
+import idv.lance.starter.exception.EnvPropertyFileNotExistException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
 import org.springframework.context.annotation.Bean;
@@ -29,9 +30,7 @@ public class VersionInfoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public DmsAppVersion versionNotProvided() {
-        DmsAppVersion info = new DmsAppVersion();
-        info.setVersion("version info not provided.");
-        return info;
+    public DmsAppVersion versionNotProvided() throws EnvPropertyFileNotExistException {
+        throw new EnvPropertyFileNotExistException();
     }
 }

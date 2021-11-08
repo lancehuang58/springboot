@@ -34,7 +34,6 @@ public class LogAutoConfiguration extends AbstractPointcutAdvisor {
         logger.info("init LogAutoConfiguration start");
         this.pointcut = new AnnotationMatchingPointcut(null, LogTime.class);
         this.advice = new LogMethodInterceptor(logProperties.getExcludeArr());
-        logger.info("exclude method name"+ Arrays.toString(logProperties.getExcludeArr()));
         logger.info("init LogAutoConfiguration end");
     }
 

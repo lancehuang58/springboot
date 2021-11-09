@@ -1,12 +1,12 @@
-
- _
-| |
-| |     __ _ _ __   ___ ___
-| |    / _` | '_ \ / __/ _ \
-| |___| (_| | | | | (_|  __/
-\_____/\__,_|_| |_|\___\___|
-
-${AnsiColor.YELLOW} Application Name: ${spring.application.name}
-${AnsiColor.YELLOW} Application Version: ${info.version}
-${AnsiColor.YELLOW} :: Spring Boot${spring-boot.formatted-version} ::
+____________________________________
+/ Version: ${application.version}]           \
+| ${AnsiColor.RED}Spring Boot Version: ${spring-boot.version}         |
+${AnsiColor.YELLOW}
+\ App Name: ${application.title}                /
+ ------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
 

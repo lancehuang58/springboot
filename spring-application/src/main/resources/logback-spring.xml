@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <contextName>logback-spring</contextName>
-    <property name="logback.dir" value="/Users/lance.huang/log"/>
     <property name="logback.appname" value="spring"/>
+    <property name="logback.dir" value="/disk/log/${logback.appname}"/>
     <property name="message_format" value="%d [%thread] %-5level %logger{36} %line - %msg%n"/>
     <appender name="console_log" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

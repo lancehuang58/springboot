@@ -18,12 +18,12 @@ public class MyApplicationRunner implements ApplicationRunner {
         printArgs(args);
     }
     public void printArgs(ApplicationArguments arguments) {
-        System.out.println("# 非选项参数数量: " + arguments.getNonOptionArgs().size());
-        System.out.println("# 选项参数数量: " + arguments.getOptionNames().size());
-        System.out.println("# 非选项参具参数:");
+        System.out.println("# NonOptionArgs: " + arguments.getNonOptionArgs().size());
+        System.out.println("# OptionName size: " + arguments.getOptionNames().size());
+        System.out.println("# NonOptionArgs:");
         arguments.getNonOptionArgs().forEach(System.out::println);
 
-        System.out.println("# 选项参数具体参数:");
+        System.out.println("# OptionNames:");
         arguments.getOptionNames().forEach(optionName -> {
             System.out.println("--" + optionName + "=" + arguments.getOptionValues(optionName));
         });

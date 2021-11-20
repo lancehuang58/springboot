@@ -34,8 +34,8 @@ public class HelloController {
     @ResponseBody
     public ResponseEntity<NameValue> changeLocale(HttpServletRequest request, HttpServletResponse response) {
         Locale locale = LocaleContextHolder.getLocale();
-        log.info("locale {}", locale);
-        log.info("app.title {}", messageSource.getMessage("app.title", null, locale));
+        log.info("locale jrebel {}", locale);
+        log.info("app.title jrebel {}", messageSource.getMessage("app.title", null, locale));
         NameValue nameValue = new NameValue("title", messageSource.getMessage("app.title", null, locale));
         return new ResponseEntity<NameValue>(nameValue, HttpStatus.OK);
     }

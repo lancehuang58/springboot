@@ -1,8 +1,7 @@
 package idv.lance.service;
 
-import idv.lance.dao.TaskFilterDao;
-import idv.lance.dao.entity.TaskFilter;
-import idv.lance.dao.mapper.TaskFilterMapper;
+import idv.lance.dao.UserDao;
+import idv.lance.dao.entity.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +12,14 @@ import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class TaskFilterMapperTest {
+public class UserMapperTest {
 
     @Autowired
-    TaskFilterDao taskFilterDao;
+    UserDao userDao;
 
     @Test
     public void testSelect() {
-        List<TaskFilter> userFilters = taskFilterDao.findPersonalFilter("UnOT");
+        List<User> userFilters = userDao.findByName("UnOT");
         userFilters.forEach(System.out::println);
     }
 }

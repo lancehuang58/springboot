@@ -47,6 +47,9 @@ public class I18nConverterInterceptor implements Interceptor {
 
   private Object convert(Object object) throws InvocationTargetException, IllegalAccessException {
     Set<String> i18nKeys = collectI18nKey(Arrays.asList(object));
+    if (i18nKeys.isEmpty()) {
+      return object;
+    }
     Map<String, String> i18nLabelMapping = converter.convert(i18nKeys);
     for (Field field : object.getClass().getDeclaredFields()) {
       I18n fieldAnnotatedI18n = field.getAnnotation(I18n.class);
@@ -69,6 +72,10 @@ public class I18nConverterInterceptor implements Interceptor {
       throws InvocationTargetException, IllegalAccessException {
 
     Set<String> i18nKeys = collectI18nKey(objList);
+
+    if (i18nKeys.isEmpty()) {
+      return objList;
+    }
 
     final Map<String, String> i18nLabelMapping = converter.convert(i18nKeys);
 

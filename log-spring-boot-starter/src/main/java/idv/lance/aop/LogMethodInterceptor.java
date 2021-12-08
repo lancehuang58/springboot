@@ -23,7 +23,7 @@ public class LogMethodInterceptor implements MethodInterceptor {
         long start = System.currentTimeMillis();
         Object result = invocation.proceed();
         long end = System.currentTimeMillis();
-        logger.info("====method({}), cost({}) ", methodName, (end - start));
+        logger.info("call method({}), cost time({}) ", methodName, (end - start));
         return result;
     }
 }

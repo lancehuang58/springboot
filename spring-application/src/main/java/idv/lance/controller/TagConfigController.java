@@ -21,4 +21,9 @@ public class TagConfigController {
     queryWrapper.eq("label", label);
     return tagConfigMapper.selectOne(queryWrapper);
   }
+
+  @GetMapping("/tagconfig/id/{id}")
+  public TagConfig getTagConfigById(@PathVariable Long id) {
+    return tagConfigMapper.selectById(id);
+  }
 }

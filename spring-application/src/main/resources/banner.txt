@@ -1,9 +1,8 @@
 ____________________________________
-/ Version: ${application.version}]           \
-| ${AnsiColor.RED}Spring Boot Version: ${spring-boot.version}         |
-${AnsiColor.YELLOW}
-\ App Name: ${application.title}                /
- ------------------------------------
+Version: ${application.version}]
+Spring Boot Version: ${spring-boot.version}
+App Name: ${application.title}
+------------------------------------
         \   ^__^
          \  (oo)\_______
             (__)\       )\/\

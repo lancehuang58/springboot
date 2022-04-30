@@ -1,6 +1,6 @@
 package idv.lance.controller;
 
-import idv.lance.service.HelloService;
+import idv.lance.service.imp.HelloServiceImpl;
 import idv.lance.vo.NameValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.Locale;
 public class HelloController {
 
     @Autowired
-    HelloService helloService;
+    HelloServiceImpl helloService;
 
     @Autowired
     MessageSource messageSource;

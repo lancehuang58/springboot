@@ -1,7 +1,7 @@
-package idv.lance.mapper;
+package idv.lance.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import idv.lance.entity.UserView;
+import idv.lance.dao.entity.UserView;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

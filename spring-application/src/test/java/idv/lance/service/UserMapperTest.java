@@ -1,7 +1,8 @@
 package idv.lance.service;
 
 import idv.lance.dao.UserDao;
-import idv.lance.dao.entity.User;
+import idv.lance.dao.entity.UserView;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class UserMapperTest {
 
     @Test
     public void testSelect() {
-        List<User> userFilters = userDao.findByName("UnOT");
-        userFilters.forEach(System.out::println);
+        List<UserView> users = userDao.findByName("SRV-IAD1.A");
+        Assertions.assertThat(users).isNotEmpty();
     }
 }

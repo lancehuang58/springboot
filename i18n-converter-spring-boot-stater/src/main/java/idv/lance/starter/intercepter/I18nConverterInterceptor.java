@@ -8,16 +8,20 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import idv.lance.starter.service.I18nService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 
+@Slf4j
+@AllArgsConstructor
 @Intercepts({
   @Signature(
       type = ResultSetHandler.class,
@@ -26,31 +30,27 @@ import org.springframework.beans.BeanUtils;
 })
 public class I18nConverterInterceptor implements Interceptor {
 
-  private static final Logger log = LoggerFactory.getLogger(I18nConverterInterceptor.class);
-
-  private Converter converter;
-
-  public I18nConverterInterceptor(Converter converter) {
-    this.converter = converter;
-  }
+  private I18nService service;
 
   @Override
   public Object intercept(Invocation invocation) throws Throwable {
     Object result = invocation.proceed();
     if (result instanceof Collection) {
-      Collection collection = (Collection) result;
-      return convert(collection);
+      Collection<Object> collection = (Collection<Object>) result;
+      return convertCollection(collection);
     } else {
       return convert(result);
     }
   }
 
-  private Collection<Object> convert(Collection<Object> objList) throws Exception {
+  private Collection<Object> convertCollection(Collection<Object> objList) throws Exception {
+    log.info("convert object list");
     Set<String> i18nKeys = collectI18nKey(objList);
     if (i18nKeys.isEmpty()) {
       return objList;
     }
-    Map<String, String> i18nLabelMapping = converter.convert(i18nKeys);
+
+    Map<String, String> i18nLabelMapping = service.findByKeys(i18nKeys);
     ValueSetting valueSetting = new ValueSetting(i18nLabelMapping);
     objectListIterate(objList, valueSetting);
     return objList;
@@ -60,13 +60,23 @@ public class I18nConverterInterceptor implements Interceptor {
     Set<String> i18nKeys = collectI18nKey(Collections.singletonList(object));
 
     if (i18nKeys.isEmpty()) {
+      log.info("annotated key is empty");
       return object;
+    } else {
+      log.info("key exist");
     }
 
-    Map<String, String> i18nLabelMapping = converter.convert(i18nKeys);
+    Map<String, String> i18nLabelMapping = service.findByKeys(i18nKeys);
+    log.info("i18nLabelMapping {}", i18nLabelMapping);
     ValueSetting valueSetting = new ValueSetting(i18nLabelMapping);
     objectProcess(valueSetting, object);
     return object;
+  }
+
+  private Set<String> collectI18nKey(Object obj) throws Exception {
+    KeyCollector keyCollector = new KeyCollector();
+    objectProcess(keyCollector, obj);
+    return keyCollector.getI18nKeys();
   }
 
   private Set<String> collectI18nKey(Collection<Object> objList) throws Exception {
@@ -84,7 +94,7 @@ public class I18nConverterInterceptor implements Interceptor {
 
   private static void objectProcess(FieldProcessor fieldProcessor, Object object) throws Exception {
     for (Field field : object.getClass().getDeclaredFields()) {
-      I18n fieldAnnotatedI18n = field.getAnnotation(I18n.class);
+      I18nMapping fieldAnnotatedI18n = field.getAnnotation(I18nMapping.class);
       if (fieldAnnotatedI18n == null) {
         continue;
       }
@@ -123,7 +133,7 @@ public class I18nConverterInterceptor implements Interceptor {
   }
 
   static class KeyCollector implements FieldProcessor {
-    private Set<String> i18nKeys = new HashSet<>();
+    private final Set<String> i18nKeys = new HashSet<>();
 
     @Override
     public void process(PropertyDescriptor ps, Object object) throws Exception {

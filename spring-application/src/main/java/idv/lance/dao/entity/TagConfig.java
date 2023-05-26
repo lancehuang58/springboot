@@ -1,7 +1,7 @@
 package idv.lance.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import idv.lance.starter.intercepter.I18n;
+import idv.lance.starter.intercepter.I18nMapping;
 import lombok.Data;
 
 @Data
@@ -10,7 +10,7 @@ public class TagConfig {
   @TableId
   private Long id;
 
-  @I18n
+  @I18nMapping
   private String label;
   private Long many;
   private String uiType;
@@ -19,6 +19,6 @@ public class TagConfig {
   private String tagKey;
   private String aspectDataCategory;
 
-  @I18n
+  @I18nMapping
   private String placeholder;
 }

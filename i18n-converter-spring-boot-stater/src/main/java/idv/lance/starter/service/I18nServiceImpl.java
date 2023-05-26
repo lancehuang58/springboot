@@ -72,8 +72,7 @@ public class I18nServiceImpl implements I18nService {
     try {
       return cache.get(i18nKey);
     } catch (Exception e) {
-      log.error(e.getMessage(), e);
-      log.warn("can't find any mapping key {}", i18nKey);
+      log.warn("can't find any mapping key {}, use key as return value..., if you need to use i18n mapping service, please add i18n key/value to i18n table.", i18nKey);
       return new I18nEntity().setId(i18nKey).setZhTw(i18nKey).setEnUs(i18nKey).setZhCn(i18nKey);
     }
   }

@@ -44,7 +44,6 @@ public class I18nConverterInterceptor implements Interceptor {
   }
 
   private Collection<Object> convertCollection(Collection<Object> objList) throws Exception {
-    log.info("convert object list");
     Set<String> i18nKeys = collectI18nKey(objList);
     if (i18nKeys.isEmpty()) {
       return objList;
@@ -60,23 +59,13 @@ public class I18nConverterInterceptor implements Interceptor {
     Set<String> i18nKeys = collectI18nKey(Collections.singletonList(object));
 
     if (i18nKeys.isEmpty()) {
-      log.info("annotated key is empty");
       return object;
-    } else {
-      log.info("key exist");
     }
 
     Map<String, String> i18nLabelMapping = service.findByKeys(i18nKeys);
-    log.info("i18nLabelMapping {}", i18nLabelMapping);
     ValueSetting valueSetting = new ValueSetting(i18nLabelMapping);
     objectProcess(valueSetting, object);
     return object;
-  }
-
-  private Set<String> collectI18nKey(Object obj) throws Exception {
-    KeyCollector keyCollector = new KeyCollector();
-    objectProcess(keyCollector, obj);
-    return keyCollector.getI18nKeys();
   }
 
   private Set<String> collectI18nKey(Collection<Object> objList) throws Exception {

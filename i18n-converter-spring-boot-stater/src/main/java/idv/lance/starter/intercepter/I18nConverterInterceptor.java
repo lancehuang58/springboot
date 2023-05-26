@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import idv.lance.starter.annotation.I18nMapping;
 import idv.lance.starter.service.I18nService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,7 @@ public class I18nConverterInterceptor implements Interceptor {
       Collection<Object> collection = (Collection<Object>) result;
       return convertCollection(collection);
     } else {
-      return convert(result);
+      return convertSingle(result);
     }
   }
 
@@ -55,7 +56,7 @@ public class I18nConverterInterceptor implements Interceptor {
     return objList;
   }
 
-  private Object convert(Object object) throws Exception {
+  private Object convertSingle(Object object) throws Exception {
     Set<String> i18nKeys = collectI18nKey(Collections.singletonList(object));
 
     if (i18nKeys.isEmpty()) {
@@ -116,7 +117,6 @@ public class I18nConverterInterceptor implements Interceptor {
       Object value = ps.getReadMethod().invoke(object);
       String i18nKey = String.valueOf(value);
       String i18nValue = i18nLabelMapping.getOrDefault(i18nKey, String.valueOf(value));
-      log.info("i18n convert from [{}] to [{}]", i18nKey, i18nValue);
       ps.getWriteMethod().invoke(object, i18nValue);
     }
   }

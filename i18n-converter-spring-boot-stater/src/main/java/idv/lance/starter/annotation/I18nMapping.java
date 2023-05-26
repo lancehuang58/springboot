@@ -1,4 +1,4 @@
-package idv.lance.starter.intercepter;
+package idv.lance.starter.annotation;
 
 
 import java.lang.annotation.ElementType;

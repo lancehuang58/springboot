@@ -22,4 +22,16 @@
     <module>db-log-spring-boot-starter</module>
     <module>i18n-converter-spring-boot-stater</module>
   </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+    </dependencies>
 </project>

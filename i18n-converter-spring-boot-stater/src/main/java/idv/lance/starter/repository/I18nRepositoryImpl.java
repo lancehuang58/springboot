@@ -18,14 +18,12 @@ public class I18nRepositoryImpl implements I18nRepository {
 
   @Override
   public I18nEntity findByKey(String i18Key) {
-    log.info("select by key {}", i18Key);
     String sql = String.format(SQL_SELECT_ONE, i18Key);
     return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(I18nEntity.class));
   }
 
   @Override
   public List<I18nEntity> findAll() {
-    log.info("select all i18n");
     return jdbcTemplate.query(SQL_SELECT_ALL, new BeanPropertyRowMapper<>(I18nEntity.class));
   }
 }

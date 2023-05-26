@@ -1,7 +1,7 @@
 package idv.lance.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import idv.lance.starter.intercepter.I18nMapping;
+import idv.lance.starter.annotation.I18nMapping;
 import lombok.Data;
 
 @Data

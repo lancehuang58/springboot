@@ -47,13 +47,14 @@ public class I18nServiceImpl implements I18nService {
   public Map<String, String> findByKeys(Set<String> i18Keys) {
 
     return i18Keys.stream()
-        .map(this::getEntity)
+        .map(this::mappingValue)
         .map(this::mappingLocale)
         .collect(
             groupingBy(Pair::getLeft, collectingAndThen(toList(), list -> list.get(0).getRight())));
   }
 
   private Pair<String, String> mappingLocale(I18nEntity entity) {
+
     Locale locale = LocaleContextHolder.getLocale();
 
     if (locale == Locale.TAIWAN) {
@@ -63,15 +64,17 @@ public class I18nServiceImpl implements I18nService {
     if (locale == Locale.CHINA) {
       return Pair.of(entity.getId(), entity.getZhCn());
     }
+
     return Pair.of(entity.getId(), entity.getEnUs());
   }
 
-  private I18nEntity getEntity(String s) {
+  private I18nEntity mappingValue(String i18nKey) {
     try {
-      return cache.get(s);
+      return cache.get(i18nKey);
     } catch (Exception e) {
       log.error(e.getMessage(), e);
-      return null;
+      log.warn("can't find any mapping key {}", i18nKey);
+      return new I18nEntity().setId(i18nKey).setZhTw(i18nKey).setEnUs(i18nKey).setZhCn(i18nKey);
     }
   }
 }

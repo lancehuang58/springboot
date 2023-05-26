@@ -18,7 +18,6 @@ public class I18nConverterAutoConfiguration {
 
   @Bean
   public I18nConverterInterceptor i18nConverterInterceptor() {
-    log.debug("init i18n converter.");
     return new I18nConverterInterceptor(i18nService);
   }
 }

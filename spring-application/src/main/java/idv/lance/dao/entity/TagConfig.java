@@ -1,14 +1,14 @@
 package idv.lance.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import idv.lance.starter.annotation.I18nMapping;
+import com.delta.dms.i18n.annotation.I18nMapping;
 import lombok.Data;
 
 @Data
 public class TagConfig {
 
   @TableId
-  private Long id;
+  private String id;
 
   @I18nMapping
   private String label;

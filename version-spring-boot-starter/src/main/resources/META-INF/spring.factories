@@ -1,2 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=idv.lance.starter.VersionInfoConfiguration
-org.springframework.boot.diagnostics.FailureAnalyzer=idv.lance.starter.VersionInfoFailureAnalyzer
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.delta.dms.i18n.VersionInfoConfiguration
+org.springframework.boot.diagnostics.FailureAnalyzer=com.delta.dms.i18n.VersionInfoFailureAnalyzer

@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>i18n-converter-spring-boot-stater</artifactId>
+    <artifactId>i18n-helper-starter</artifactId>
     <version>1.0.0</version>
     <dependencies>
         <dependency>

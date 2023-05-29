@@ -16,7 +16,6 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <modules>
-        <module>log-spring-boot-starter</module>
         <module>spring-application</module>
         <module>version-spring-boot-starter</module>
         <module>db-log-spring-boot-starter</module>

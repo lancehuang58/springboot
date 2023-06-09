@@ -12,7 +12,7 @@ import java.util.List;
 public class SearchController {
 
   @Autowired
-//  @Qualifier("searchByAdapter")
+  @Qualifier("searchByAdapter")
   ISearch search;
 
 //  @GetMapping("search/dao")

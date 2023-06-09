@@ -18,6 +18,21 @@
     <dependencies>
         <dependency>
             <groupId>idv.lance</groupId>
+            <artifactId>share</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>idv.lance</groupId>-->
+<!--            <artifactId>dao</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>idv.lance</groupId>-->
+<!--            <artifactId>adapter</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>idv.lance</groupId>
             <artifactId>version-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

@@ -20,5 +20,8 @@
         <module>version-spring-boot-starter</module>
         <module>db-log-spring-boot-starter</module>
         <module>i18n-converter-spring-boot-stater</module>
+        <module>share</module>
+<!--        <module>dao</module>-->
+<!--        <module>adapter</module>-->
     </modules>
 </project>
